@@ -1,6 +1,6 @@
 # Week 9 - Challenge Pokemon
 
-![Logo Pokémon](pokemon-logo.svg)
+![Logo Pokémon](https://programacion.net/files/article/20170428010447_pokemon.jpg)
 
 ## Pokémon
 
@@ -19,3 +19,7 @@ En cualquiera de los listados, el usuario debería poder ir al detalle de un pok
 BEM
 HTML semántico
 Testing
+
+## Links
+
+[Explicacion challenge](https://github.com/isdi-coders-2022/bootcamp-202204-ONLINE/tree/main/Week9)
