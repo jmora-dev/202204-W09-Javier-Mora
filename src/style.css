@@ -76,3 +76,7 @@ a {
   color: var(--font-dark-color);
   border-radius: 0.5rem;
 }
+
+.details-card__title {
+  text-transform: capitalize;
+}
