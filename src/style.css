@@ -1,3 +1,8 @@
+:root {
+  --dark-color: #2c3e50;
+  --font-dark-color: #fff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,7 +29,7 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--dark-color);
   margin-top: 60px;
 }
 
@@ -49,8 +54,8 @@ a {
 }
 
 .pokemon-list__item:hover {
-  background-color: #2c3e50;
-  color: #fff;
+  background-color: var(--dark-color);
+  color: var(--font-dark-color);
   border-radius: 0.5rem;
 }
 
@@ -63,5 +68,12 @@ a {
 }
 
 .pagination__item {
+  padding: 0.8rem;
   cursor: pointer;
+}
+
+.pagination__item:hover {
+  background-color: var(--dark-color);
+  color: var(--font-dark-color);
+  border-radius: 0.5rem;
 }
