@@ -1,6 +1,6 @@
 # Week 9 - Challenge Pokemon
 
-![Logo Pokémon](https://programacion.net/files/article/20170428010447_pokemon.jpg)
+![Logo Pokémon](https://vignette.wikia.nocookie.net/logopedia/images/2/2b/Pokemon_2D_logo.svg/revision/latest?cb=20170115063554)
 
 ## Pokémon
 
