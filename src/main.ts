@@ -1,10 +1,11 @@
+import { Home } from "./pages/Home";
 import "./style.css";
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
 if (app) {
-  app.innerHTML = `
-  <h1>Hi, welcome to Pokémon fan page !!!</h1>
-  <p>Sorry, page under construction</p>
-`;
+  const path = document.location.pathname;
+  if (path === "/" || path.match(/\/index(.html)?$/)) {
+    new Home("#app");
+  }
 }
