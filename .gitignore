@@ -1,3 +1,6 @@
+# Optional configure
+.editorconfig
+
 # Logs
 logs
 *.log
