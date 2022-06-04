@@ -1,6 +1,6 @@
 # Week 9 - Challenge Pokemon
 
-![Logo Pokémon](pokemon-logo.svg)
+![Logo Pokémon](https://vignette.wikia.nocookie.net/logopedia/images/2/2b/Pokemon_2D_logo.svg/revision/latest?cb=20170115063554)
 
 ## Pokémon
 
@@ -19,3 +19,7 @@ En cualquiera de los listados, el usuario debería poder ir al detalle de un pok
 BEM
 HTML semántico
 Testing
+
+## Links
+
+[Explicacion challenge](https://github.com/isdi-coders-2022/bootcamp-202204-ONLINE/tree/main/Week9)
