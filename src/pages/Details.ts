@@ -62,6 +62,6 @@ export class Details extends Component implements iComponent {
           <li>Weight: ${pokemon.weight}</li>
         </ul>
       </section>
-      <footer><p><a href='/'>Go to pokedex</a></p></footer>`;
+      <footer><p><a class='button' href='/'>Go to pokedex</a></p></footer>`;
   }
 }

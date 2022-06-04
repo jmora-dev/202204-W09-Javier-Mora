@@ -50,6 +50,7 @@ a {
   text-transform: capitalize;
   width: 100%;
   height: 100%;
+  font-weight: bold;
 }
 
 .pokemon-list__item-link:hover {
@@ -79,4 +80,16 @@ a {
 
 .details-card__title {
   text-transform: capitalize;
+}
+
+.button {
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--dark-color);
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: var(--dark-color);
+  color: var(--font-dark-color);
 }
