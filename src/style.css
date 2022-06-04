@@ -30,7 +30,8 @@ a {
 
 .pokemon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 100px));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
+  justify-content: center;
 }
 
 .pokemon-list__item {
