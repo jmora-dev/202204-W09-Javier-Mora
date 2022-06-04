@@ -33,7 +33,7 @@ export class PokemonList extends Component implements iComponent {
     if (this.elements && this.elements.length) {
       html += this.elements
         .map((element) => {
-          return `<li><a class='pokemon-list__item-link' href="/details?search=${element.name}">${element.name}</a></li>`;
+          return `<li><a class='pokemon-list__item-link' href="/?search=${element.name}">${element.name}</a></li>`;
         })
         .join("");
     } else {
