@@ -28,7 +28,9 @@ export class Details extends Component implements iComponent {
   pokemonResponseToPokemonDetails(data: any): iPokemonDetails {
     return {
       name: data.name,
+      order: data.order,
       height: data.height,
+      weight: data.weight,
       spriteDefault: data.sprites.front_default,
     };
   }
@@ -55,7 +57,9 @@ export class Details extends Component implements iComponent {
         <img src='${pokemon.spriteDefault}' alt='${pokemon.name} sprite' />
         <h3>Data</h3>
         <ul>
-            <li>Height: ${pokemon.height}</li>
+          <li>Order: ${pokemon.order}</li>
+          <li>Height: ${pokemon.height}</li>
+          <li>Weight: ${pokemon.weight}</li>
         </ul>
       </section>
       <footer><p><a href='/'>Go to pokedex</a></p></footer>`;
