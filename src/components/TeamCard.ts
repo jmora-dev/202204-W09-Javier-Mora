@@ -54,22 +54,26 @@ export class TeamCard extends Component implements iComponent {
 
   createTemplate(): string {
     if (!this.editable) {
-      return `<h1>${this.alias ? this.alias : this.name}</h1>
+      return `<div class="team-card">
+      <h3>${this.alias ? this.alias : this.name}</h3>
         <img src="${this.sprite}" alt="${this.name} sprite" />
+        <p class="team-card__pokemon-name">${this.name}</p>
         <div class="team-card__button-panel">
-            <a href="/?search=${this.name}">Details</a>
-            <button data-role="edit">Edit</button>
-            <button data-role="delete">Set free</button>
+            <a href="/?search=${this.name}" class="button">Details</a>
+            <button data-role="edit" class="button">Edit</button>
+            <button data-role="delete" class="button">Set free</button>
+        </div>
         </div>
     `;
     } else {
-      return `<h1><input type="text" value="${
+      return `<h3><input type="text" value="${
         this.alias ? this.alias : this.name
-      }" /></h1>
+      }" /></h3>
         <img src="${this.sprite}" alt="${this.name} sprite" />
+        <p>${this.name}</p>
         <div class="team-card__button-panel">
-            <button data-role="save">Save</button>
-            <button data-role="cancel">Cancel</button>
+            <button data-role="save" class="button button--green">Save</button>
+            <button data-role="cancel" class="button button--red">Cancel</button>
         </div>
     `;
     }
