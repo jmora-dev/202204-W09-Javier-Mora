@@ -66,14 +66,16 @@ export class TeamCard extends Component implements iComponent {
         </div>
     `;
     } else {
-      return `<h3><input type="text" value="${
+      return `<div class="team-card">
+      <h3><input type="text" value="${
         this.alias ? this.alias : this.name
       }" /></h3>
         <img src="${this.sprite}" alt="${this.name} sprite" />
-        <p>${this.name}</p>
+        <p class="team-card__pokemon-name">${this.name}</p>
         <div class="team-card__button-panel">
             <button data-role="save" class="button button--green">Save</button>
             <button data-role="cancel" class="button button--red">Cancel</button>
+        </div>
         </div>
     `;
     }
