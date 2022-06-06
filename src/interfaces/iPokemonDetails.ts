@@ -1,4 +1,5 @@
 export interface iPokemonDetails {
+  id: number;
   name: string;
   order: number;
   height: number;

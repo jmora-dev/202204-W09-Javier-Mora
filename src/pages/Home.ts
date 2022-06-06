@@ -1,7 +1,9 @@
 import { Component } from "../components/Component";
 import { PokemonList } from "../components/PokemonList";
+import { TeamList } from "../components/TeamList";
 import { iComponent } from "../interfaces/iComponent";
 import { iPokemonListResponse } from "../interfaces/iPokemonListElements";
+import { getPokemonList } from "../services/pokemonApi";
 
 export class Home extends Component implements iComponent {
   page = 1;
@@ -14,19 +16,11 @@ export class Home extends Component implements iComponent {
   }
 
   updatePokemonList() {
-    this.getPokemonList(this.page, this.elementsByPage)
+    getPokemonList(this.page, this.elementsByPage)
       .then((res) => res.json())
       .then((res) => (this.pokemonListResponse = res))
       .catch(() => (this.pokemonListResponse = null))
       .finally(() => this.render());
-  }
-
-  getPokemonList(page: number, elementByPage: number) {
-    return fetch(
-      `https://pokeapi.co/api/v2/pokemon/?limit=${elementByPage}&offset=${
-        elementByPage * (page - 1)
-      }`
-    );
   }
 
   onSelectPage(page: number): void {
@@ -36,6 +30,7 @@ export class Home extends Component implements iComponent {
 
   render(): void {
     super.render();
+    new TeamList(this.selector + " .team-container");
     new PokemonList(
       this.selector + " .table-container",
       this.pokemonListResponse && this.pokemonListResponse.results,
@@ -49,6 +44,8 @@ export class Home extends Component implements iComponent {
   createTemplate(): string {
     return `
       <section class="">
+        <h2 class="section-title">Team</h2>
+        <div class="team-container"></div>   
         <h2 class="section-title">Pokedex</h2>
         <div class="table-container"></div>   
       </section>`;
