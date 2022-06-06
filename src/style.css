@@ -1,10 +1,18 @@
 :root {
   --dark-color: #2c3e50;
   --font-dark-color: #fff;
+  --green-color: #17bd57;
+  --font-green-color: #fff;
+  --red-color: #c42a2a;
+  --font-red-color: #fff;
 }
 
 * {
   box-sizing: border-box;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--dark-color);
 }
 
 body {
@@ -25,16 +33,43 @@ a {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--dark-color);
   margin-top: 60px;
+}
+
+.team-container {
+  padding: 0 2rem;
+  margin-bottom: 5rem;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.team-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  border: 2px solid var(--dark-color);
+  padding: 0.8rem 1rem;
+}
+
+.team-card__pokemon-name {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.team-card__button-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .table-container {
   padding: 0 2rem;
+  margin-bottom: 3rem;
 }
 
 .pokemon-list {
@@ -70,26 +105,51 @@ a {
 .pagination__item {
   padding: 0.8rem;
   cursor: pointer;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+}
+
+.pagination__item.is-active {
+  border-color: var(--dark-color);
 }
 
 .pagination__item:hover {
   background-color: var(--dark-color);
   color: var(--font-dark-color);
-  border-radius: 0.5rem;
 }
 
 .details-card__title {
   text-transform: capitalize;
 }
 
+.details-card__data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
 .button {
+  cursor: pointer;
   padding: 0.8rem;
   border-radius: 0.5rem;
   border: 2px solid var(--dark-color);
   font-weight: bold;
+  font-size: 1rem;
+  background-color: transparent;
 }
 
 .button:hover {
   background-color: var(--dark-color);
   color: var(--font-dark-color);
+}
+
+.button--green {
+  background-color: var(--green-color);
+  color: var(--font-green-color);
+}
+
+.button--red {
+  background-color: var(--red-color);
+  color: var(--font-red-color);
 }
