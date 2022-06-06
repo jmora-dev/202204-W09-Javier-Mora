@@ -50,7 +50,7 @@ export class Details extends Component implements iComponent {
         <h2 class='details-card__title'>${pokemon.name}</h2>
         <img src='${pokemon.spriteDefault}' alt='${pokemon.name} sprite' />
         <h3>Data</h3>
-        <ul>
+        <ul class="details-card__data-list">
           <li>Order: ${pokemon.order}</li>
           <li>Height: ${pokemon.height}</li>
           <li>Weight: ${pokemon.weight}</li>

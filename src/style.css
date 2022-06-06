@@ -120,6 +120,13 @@ a {
   text-transform: capitalize;
 }
 
+.details-card__data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
 .button {
   cursor: pointer;
   padding: 0.8rem;
