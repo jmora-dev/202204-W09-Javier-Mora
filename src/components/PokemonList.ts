@@ -1,20 +1,32 @@
 import { iComponent } from "../interfaces/iComponent";
-import { iPokemonListElements } from "../interfaces/iPokemonListElements";
+import { iPokemonListElement } from "../interfaces/iPokemonListElements";
+import { getPokemonList } from "../services/pokemonApi";
 import { Component } from "./Component";
 import { Pagination } from "./Pagination";
 
 export class PokemonList extends Component implements iComponent {
-  constructor(
-    public selector: string,
-    public elements: iPokemonListElements | null,
-    public page: number,
-    public elementsTotal: number,
-    public elementsByPage: number,
-    public onSelectPage: (page: number) => void
-  ) {
+  page = 1;
+  elementsByPage = 50;
+  elementsTotal = 0;
+  next = "";
+  back = "";
+  pokemonList: Array<iPokemonListElement> = [];
+
+  constructor(public selector: string) {
     super(selector, () => this.createTemplate());
-    console.log(selector);
     this.render();
+    this.updatePokemonList();
+  }
+
+  updatePokemonList(): void {
+    getPokemonList(this.page, this.elementsByPage)
+      .then((res) => {
+        this.pokemonList = res.results;
+        this.elementsTotal = res.count;
+        this.next = res.next ? res.next : "";
+        this.back = res.previous ? res.previous : "";
+      })
+      .finally(() => this.render());
   }
 
   render(): void {
@@ -28,12 +40,17 @@ export class PokemonList extends Component implements iComponent {
     );
   }
 
+  onSelectPage(page: number): void {
+    this.page = page;
+    this.updatePokemonList();
+  }
+
   createTemplate(): string {
     let html = "<ul class='pokemon-list'>";
-    if (this.elements && this.elements.length) {
-      html += this.elements
-        .map((element) => {
-          return `<li><a class='pokemon-list__item-link' href="/?search=${element.name}">${element.name}</a></li>`;
+    if (this.pokemonList.length) {
+      html += this.pokemonList
+        .map((pokemon) => {
+          return `<li><a class='pokemon-list__item-link' href="/?search=${pokemon.name}">${pokemon.name}</a></li>`;
         })
         .join("");
     } else {

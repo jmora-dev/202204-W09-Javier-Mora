@@ -15,7 +15,7 @@ export const getPokemonTeam = (): Promise<Response> => {
   return fetch(
     "https://pokemon-team-e58bc-default-rtdb.europe-west1.firebasedatabase.app/team.json",
     { headers: { "content-type": "application/json;charset=UTF-8" } }
-  );
+  ).then((res) => res.json());
 };
 
 export const deletePokemonFromTeam = (pokemonTeamId: string) => {
