@@ -19,7 +19,6 @@ export class TeamList extends Component implements iComponent {
 
   updatePokemonTeam() {
     getPokemonTeam()
-      .then((res) => res.json())
       .then((res) => (this.pokemonTeam = responseToPokemonTeam(res)))
       .catch(() => (this.pokemonTeam = []))
       .finally(() => this.render());

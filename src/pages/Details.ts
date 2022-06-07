@@ -17,7 +17,6 @@ export class Details extends Component implements iComponent {
 
   loadPokemon() {
     getPokemonDetailsByName(this.pokemonSearch)
-      .then((res) => res.json())
       .then((res) => (this.pokemonDetails = responseToPokemonDetails(res)))
       .catch(() => (this.pokemonDetails = null))
       .finally(() => {
