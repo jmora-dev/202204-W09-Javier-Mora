@@ -11,7 +11,7 @@ export class PokemonListItem extends Component implements iComponent {
   createTemplate(): string {
     return `<a class='pokemon-list__item-link' href="/?search=${this.pokemon.name}">
         <img src="${this.pokemon.sprite}" />
-        <p>${this.pokemon.name}</p>
+        <p class="pokemon-list__item-name">${this.pokemon.name}</p>
     </a>`;
   }
 }

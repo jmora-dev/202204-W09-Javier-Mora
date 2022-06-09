@@ -43,13 +43,14 @@ a {
 }
 
 .team-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
   gap: 1rem;
+  padding: 0 0 1rem 0;
+  overflow-x: auto;
 }
 
 .team-card {
-  width: 100%;
+  width: 200px;
   height: 100%;
   border-radius: 0.5rem;
   border: 2px solid var(--dark-color);
@@ -74,7 +75,7 @@ a {
 
 .pokemon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 250px));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
   justify-content: center;
   gap: 0.2rem;
 }
@@ -92,6 +93,10 @@ a {
   background-color: var(--dark-color);
   color: var(--font-dark-color);
   border-radius: 0.5rem;
+}
+
+.pokemon-list__item-link:hover .pokemon-list__item-name {
+  color: var(--font-dark-color);
 }
 
 .pagination {
