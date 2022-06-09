@@ -1,6 +1,5 @@
 import { iComponent } from "../interfaces/iComponent";
 import { iPokemonListElement } from "../interfaces/iPokemonListElements";
-import { getPokemonList } from "../services/pokemonApi";
 import { Component } from "./Component";
 
 export class PokemonListItem extends Component implements iComponent {
