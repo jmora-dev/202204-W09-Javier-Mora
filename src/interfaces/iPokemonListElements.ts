@@ -7,7 +7,7 @@ export interface iPokemonListResponse {
 
 export interface iPokemonListElement {
   name: string;
-  url: string;
+  sprite: string;
 }
 
 export type iPokemonListElements = Array<iPokemonListElement>;
