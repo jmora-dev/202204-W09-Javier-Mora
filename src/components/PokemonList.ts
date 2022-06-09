@@ -1,8 +1,12 @@
 import { iComponent } from "../interfaces/iComponent";
 import { iPokemonListElement } from "../interfaces/iPokemonListElements";
-import { getPokemonList } from "../services/pokemonApi";
+import {
+  getPokemonDetailsByName,
+  getPokemonList,
+} from "../services/pokemonApi";
 import { Component } from "./Component";
 import { Pagination } from "./Pagination";
+import { PokemonListItem } from "./PokemonListItem";
 
 export class PokemonList extends Component implements iComponent {
   page = 1;
@@ -19,14 +23,23 @@ export class PokemonList extends Component implements iComponent {
   }
 
   updatePokemonList(): void {
-    getPokemonList(this.page, this.elementsByPage)
-      .then((res) => {
-        this.pokemonList = res.results;
-        this.elementsTotal = res.count;
-        this.next = res.next ? res.next : "";
-        this.back = res.previous ? res.previous : "";
-      })
-      .finally(() => this.render());
+    getPokemonList(this.page, this.elementsByPage).then((res) => {
+      console.log(res.results);
+      this.elementsTotal = res.count;
+      this.next = res.next ? res.next : "";
+      this.back = res.previous ? res.previous : "";
+      const arrayPromises = res.results.map((pokemon: any) =>
+        getPokemonDetailsByName(pokemon.name)
+      );
+      Promise.all(arrayPromises).then((res) => {
+        this.pokemonList = res.map((item) => ({
+          name: item.name,
+          sprite: item.sprites.front_default,
+        }));
+        this.render();
+      });
+      this.render();
+    });
   }
 
   render(): void {
@@ -38,6 +51,13 @@ export class PokemonList extends Component implements iComponent {
       this.elementsByPage,
       this.onSelectPage.bind(this)
     );
+    this.pokemonList.forEach(
+      (pokemon) =>
+        new PokemonListItem(
+          this.selector + ` [data-id='${pokemon.name}']`,
+          pokemon
+        )
+    );
   }
 
   onSelectPage(page: number): void {
@@ -47,15 +67,9 @@ export class PokemonList extends Component implements iComponent {
 
   createTemplate(): string {
     let html = "<ul class='pokemon-list'>";
-    if (this.pokemonList.length) {
-      html += this.pokemonList
-        .map((pokemon) => {
-          return `<li><a class='pokemon-list__item-link' href="/?search=${pokemon.name}">${pokemon.name}</a></li>`;
-        })
-        .join("");
-    } else {
-      html += "No hay elementos para mostrar";
-    }
+    html += this.pokemonList
+      .map((pokemon) => `<li data-id="${pokemon.name}"></li>`)
+      .join("");
     html += "</ul>";
     html += "<div class='pagination-container'></div>";
     return html;
