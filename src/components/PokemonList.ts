@@ -23,23 +23,24 @@ export class PokemonList extends Component implements iComponent {
   }
 
   updatePokemonList(): void {
-    getPokemonList(this.page, this.elementsByPage).then((res) => {
-      console.log(res.results);
-      this.elementsTotal = res.count;
-      this.next = res.next ? res.next : "";
-      this.back = res.previous ? res.previous : "";
-      const arrayPromises = res.results.map((pokemon: any) =>
-        getPokemonDetailsByName(pokemon.name)
-      );
-      Promise.all(arrayPromises).then((res) => {
+    getPokemonList(this.page, this.elementsByPage)
+      .then((res) => {
+        console.log(res.results);
+        this.elementsTotal = res.count;
+        this.next = res.next ? res.next : "";
+        this.back = res.previous ? res.previous : "";
+        const arrayPromises = res.results.map((pokemon: any) =>
+          getPokemonDetailsByName(pokemon.name)
+        );
+        return Promise.all(arrayPromises);
+      })
+      .then((res) => {
         this.pokemonList = res.map((item) => ({
           name: item.name,
           sprite: item.sprites.front_default,
         }));
-        this.render();
-      });
-      this.render();
-    });
+      })
+      .finally(() => this.render());
   }
 
   render(): void {
